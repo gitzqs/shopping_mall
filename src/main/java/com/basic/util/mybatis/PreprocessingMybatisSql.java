@@ -2,7 +2,6 @@
 package com.basic.util.mybatis;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.util.Properties;
 
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;
@@ -24,8 +23,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.basic.model.sys.user.SysUser;
 
 
 /**
@@ -62,11 +59,12 @@ public class PreprocessingMybatisSql implements Interceptor {
             } catch (Exception ex) {
                 logger.info("can't get current user, may be not authenticated! \n\t exception is :{}", ex.getLocalizedMessage());
             }
-            SysUser user = (subject == null) ? null : (SysUser) subject.getPrincipal();
+//            SysUser user = (subject == null) ? null : (SysUser) subject.getPrincipal();
             
-            boundSql.setAdditionalParameter("lastOperatorId", user == null ? 0L : user.getId());
-            boundSql.setAdditionalParameter("lastOperator", user == null ? "unknown" : user.getUsername());
-            boundSql.setAdditionalParameter("lastOperatedTime", new Date());
+            
+//            boundSql.setAdditionalParameter("lastOperatorId", user == null ? 0L : user.getId());
+//            boundSql.setAdditionalParameter("lastOperator", user == null ? "unknown" : user.getUsername());
+//            boundSql.setAdditionalParameter("lastOperatedTime", new Date());
         } else if (sqlCommandType.equals(SqlCommandType.INSERT)) {
             logger.debug(".begin to set additional params with RInfo");
             Subject subject = null;
@@ -75,11 +73,11 @@ public class PreprocessingMybatisSql implements Interceptor {
             } catch (Exception ex) {
                 logger.info("can't get current user, may be not authenticated! \n\t exception is :{}", ex.getLocalizedMessage());
             }
-            SysUser user = (subject == null) ? null : (SysUser) subject.getPrincipal();
-            
-            boundSql.setAdditionalParameter("creatorId", user == null ? 0L : user.getId());
-            boundSql.setAdditionalParameter("creator", user == null ? "unknown" : user.getUsername());
-            boundSql.setAdditionalParameter("createdTime", new Date());
+//            SysUser user = (subject == null) ? null : (SysUser) subject.getPrincipal();
+//            
+//            boundSql.setAdditionalParameter("creatorId", user == null ? 0L : user.getId());
+//            boundSql.setAdditionalParameter("creator", user == null ? "unknown" : user.getUsername());
+//            boundSql.setAdditionalParameter("createdTime", new Date());
         } else if (sqlCommandType.equals(SqlCommandType.SELECT)) {
             logger.debug(".begin to set additional params with warehouse");
             

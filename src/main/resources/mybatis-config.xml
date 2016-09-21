@@ -27,15 +27,10 @@
 	</settings>
 	<typeAliases>
 		
-		<!-- sys begin -->
 		
-		<typeAlias type="com.basic.model.sys.user.SysUser" alias="sysUser"/>
-		<typeAlias type="com.basic.model.sys.role.SysRole" alias="sysRole"/>
-		<typeAlias type="com.basic.model.sys.permission.SysPermission" alias="sysPermission"/>
-		<typeAlias type="com.basic.model.sys.userRole.SysUserRole" alias="sysUserRole"/>
-		<typeAlias type="com.basic.model.sys.rolePermission.SysRolePermission" alias="sysRolePermission"/>
-		
-		<!-- sys end -->
+		<!-- customer begin -->
+			<typeAlias type="com.basic.model.customer.Customer" alias="customer"/>
+		<!-- customer end -->
 		
 		
 	</typeAliases>
