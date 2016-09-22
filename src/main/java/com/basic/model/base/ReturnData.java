@@ -42,4 +42,14 @@ public interface ReturnData {
 	String UNKNOWN_DATA_CODE = "0004";
 	
 	String UNKNOWN_DATA_MSG = "数据不存在";
+	
+	/** 参数过期 **/
+	String OVERTIME_DATA_CODE = "0005";
+	
+	String OVERTIME_DATA_MSG = "参数过期";
+	
+	/** 参数不正确 **/
+	String ERROR_DATA_CODE = "0006";
+	
+	String ERROR_DATA_MSG = "参数不正确";
 }

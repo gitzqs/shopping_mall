@@ -28,7 +28,7 @@
     	<form id="registerForm" action="${ctx}/login">
 	    	<div class="psw">
 	        	<p class="psw-p1">昵称</p>
-	            <input type="text" name="username" placeholder="昵称" 
+	            <input type="text" id="username" name="username" placeholder="昵称" 
 	            	onblur="javascript:checkName($(this),'nameSpan');"/>
 	            <span id="nameSpan" class=""></span>
 	        </div>
@@ -40,18 +40,19 @@
 	        </div>
 	    	<div class="psw">
 	        	<p class="psw-p1">确认密码</p>
-	            <input type="text" placeholder="请再次确认密码" 
+	            <input type="text" placeholder="请再次确认密码" id="password_again" name="password_again"
 	            	onblur="javascript:checkPasswordAgain($(this),'passwordAgainSpan','password');"/>
 	            <span id="passwordAgainSpan" class=""></span>
 	        </div>
 	    	<div class="psw psw2">
 	        	<p class="psw-p1">手机号</p>
-	            <input type="text" placeholder="请输入手机号"/>
-	            <button onclick="sendMessage();">获取短信验证码</button>
+	            <input id="mobile" name="mobile" type="text" placeholder="请输入手机号"/>
+	            <button type="button" id="sendMessageButton" onclick="sendMessage('mobile','mobileSpan');">获取短信验证码</button>
+	            <span id="mobileSpan" class=""></span>
 	        </div>
 	    	<div class="psw psw3">
 	        	<p class="psw-p1">短信验证码</p>
-	            <input type="text" placeholder="请输入手机验证码" />
+	            <input type="text" placeholder="请输入手机验证码" name="mobileCode"/>
 	        </div>
 	         <div class="yanzhentu">
 	        	<div class="yz-tu f-l">
@@ -63,14 +64,16 @@
 	        <br/>
 	    	<div class="psw psw3">
 	        	<p class="psw-p1">验证码</p>
-	            <input type="text" placeholder="请输入图片验证码" />
+	            <input type="text" placeholder="请输入图片验证码" id="imageCode" name="imageCode"
+	            	onblur="javascript:checkImageCode($(this),'imageCodeSpan');"/>
+	            <span id="imageCodeSpan" class=""></span>
 	        </div>
 	       
 	        <div class="agreement">
-	        	<input type="checkbox" name="hobby"></input>
+	        	<input type="checkbox" name="agree" id="agree"></input>
 	            <p>我有阅读并同意<span>《XXXX网站服务协议》</span></p>
 	        </div>
-	        <button class="psw-btn">立即注册</button>
+	        <button type="button" class="psw-btn" onclick="registerSubmit();">立即注册</button>
 	        <p class="sign-in">已有账号？请<a href="#">登录</a></p>
         </form>
     </div>

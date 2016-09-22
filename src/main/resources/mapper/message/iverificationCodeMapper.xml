@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.basic.dao.message.IVerificationCodeMapper">
+	<resultMap id="verificationCodeMap" type="verificationCode" >
+		<id column="ID" property="id" jdbcType="DECIMAL"/>
+		<result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+		<result column="CODE" property="code" jdbcType="VARCHAR"/>
+		<result column="STATUS" property="status" jdbcType="VARCHAR"/>
+		<result column="CREATED_TIME" property="createdTime" jdbcType="TIMESTAMP"/>
+		
+		<result column="DEADLINE" property="deadline" jdbcType="TIMESTAMP"/>
+		
+	</resultMap>
+	
+	<sql id="base_column">
+		ID,MOBILE,CODE,STATUS,CREATED_TIME,DEADLINE
+	</sql>
+	
+	<sql id="sql_from">
+		FROM VERIFICATION_CODE
+	</sql>
+	
+	<sql id="sql_where">
+		WHERE 1=1
+			<if test="mobile !=null and mobile !=''">
+				AND MOBILE = #{mobile}
+			</if>
+	</sql>
+	
+	<!-- 根据mobile获取验证信息 begin -->
+	<select id="loadByMobile" parameterType="String" resultMap="verificationCodeMap">
+		SELECT
+		<include refid="base_column"></include>
+		<include refid="sql_from"></include>
+		WHERE MOBILE = #{mobile}
+			AND STATUS = 'ENABLED'
+		LIMIT 1
+	</select>
+	<!-- 根据mobile获取信息 end -->
+	
+	<!-- 根据mobile失效之前验证码 begin -->
+	<update id="updateByMobile" parameterType="String">
+		UPDATE VERIFICATION_CODE
+		SET STATUS = 'DISABLED'
+		WHERE MOBILE = #{mobile}
+			AND STATUS = 'ENABLED'
+	</update>
+	<!-- 根据mobile失效之前验证码 end -->
+	
+	<!-- 保存验证码 begin -->
+	<insert id="save" parameterType="verificationCode">
+		INSERT INTO VERIFICATION_CODE(MOBILE,CODE,STATUS,CREATED_TIME,DEADLINE)values(
+			#{mobile},#{code},#{status},#{createdTime},#{deadline}
+		)
+	</insert>
+	<!-- 保存验证码 end -->
+	
+</mapper>

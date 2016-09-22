@@ -33,6 +33,10 @@
 		<!-- customer end -->
 		
 		
+		<!-- message begin -->
+			<typeAlias type="com.basic.model.message.VerificationCode" alias="verificationCode"/>
+		<!-- message end -->
+		
 	</typeAliases>
 	
 	<!-- 自定义mybatis jdbcType -->

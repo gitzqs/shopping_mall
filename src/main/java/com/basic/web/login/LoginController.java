@@ -3,6 +3,8 @@ package com.basic.web.login;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.basic.service.customer.ICustomerService;
-import com.basic.util.json.JacksonUtils;
 /**
  * 注册/登录相关
  * 
@@ -36,18 +37,30 @@ public class LoginController {
 		return "login/register";
 	}
 	
-	@RequestMapping(value="/register/checkMobile",method=RequestMethod.POST)
+	/**
+	 * 发送验证码
+	 * 
+	 * @param 
+	 * @return String
+	 */
+	@RequestMapping(value="/register/sendMessage",method=RequestMethod.POST)
 	@ResponseBody
 	public String checkMobile(String mobile){
-		Map<String,Object> params = new HashMap<String,Object>();
-		String returnCode = "";
-		if(customerService.isExists(mobile)){
-			returnCode = "0001";
-		}else{
-			returnCode = "0000";
-		}
-		params.put("returnCode", returnCode);
 		
-		return JacksonUtils.object2json(params);
+		return customerService.sendMessage(mobile);
+	}
+	
+	@RequestMapping(value="/register/handle",method=RequestMethod.POST)
+	@ResponseBody
+	public String registerHandle(HttpServletRequest request){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("username", request.getParameter("username"));
+		map.put("password", request.getParameter("password"));
+		map.put("password_again", request.getParameter("password_again"));
+		map.put("mobile", request.getParameter("mobile"));
+		map.put("mobileCode", request.getParameter("mobileCode"));
+		map.put("imageCode", request.getParameter("imageCode"));
+		
+		return customerService.registerHandle(map);
 	}
 }

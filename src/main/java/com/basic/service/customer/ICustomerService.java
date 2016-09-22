@@ -1,4 +1,9 @@
 package com.basic.service.customer;
+
+import java.util.Map;
+
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * 用户登录 service
  * 
@@ -8,12 +13,20 @@ package com.basic.service.customer;
 public interface ICustomerService {
 	
 	/**
-	 * 判断手机号是否存在
-	 * true : 存在
-	 * false : 不存在
+	 * 发送验证码请求处理
 	 * 
 	 * @param 
-	 * @return boolean
+	 * @return String
 	 */
-	boolean isExists(String mobile);
+	@Transactional
+	String sendMessage(String mobile);
+	
+	/**
+	 * 注册提交处理
+	 * 
+	 * @param 
+	 * @return String
+	 */
+	@Transactional
+	String registerHandle(Map<String,Object> map);
 }

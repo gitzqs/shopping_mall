@@ -55,3 +55,15 @@ CREATE TABLE customer_login_info(
 	PRIMARY KEY(id)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+-- TABLE STRUCTURE FOR VERIFICATION_CODE --
+DROP TABLE IF EXISTS verification_code;
+CREATE TABLE verification_code(
+	id bigint(19) NOT NULL AUTO_INCREMENT,
+	mobile varchar(20) NOT NULL ,
+	code varchar(6) NOT NULL,
+	status varchar(10) DEFAULT NULL,
+	created_time timestamp  NULL,
+	deadline timestamp NULL,
+	PRIMARY KEY(id)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+

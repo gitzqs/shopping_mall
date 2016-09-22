@@ -37,4 +37,12 @@
 	</select>
 	<!-- 根据mobile获取信息 end -->
 	
+	<!-- 注册 begin -->
+	<insert id="saveP" parameterType="customer">
+		INSERT INTO CUSTOMER(USER_NAME,PASSWORD,MOBILE,CREATED_TIME)VALUES(
+			#{userName},#{password},#{mobile},#{createdTime}
+		)
+	</insert>
+	<!-- 注册 end -->
+	
 </mapper>
