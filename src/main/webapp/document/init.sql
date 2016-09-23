@@ -12,6 +12,7 @@ CREATE TABLE customer(
 	user_name varchar(50) COLLATE utf8_bin DEFAULT NULL,
 	mobile varchar(20) COLLATE utf8_bin NOT NULL,
 	password varchar(40) COLLATE utf8_bin NOT NULL,
+	status varchar(20) DEFAULT 'ENABLED',
 	open_id  varchar(255) DEFAULT NULL,
 	created_time timestamp NULL,
 	PRIMARY KEY(id),

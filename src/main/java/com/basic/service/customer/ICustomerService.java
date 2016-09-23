@@ -2,6 +2,8 @@ package com.basic.service.customer;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -28,5 +30,14 @@ public interface ICustomerService {
 	 * @return String
 	 */
 	@Transactional
-	String registerHandle(Map<String,Object> map);
+	String registerHandle(Map<String,Object> map,HttpServletRequest request);
+	
+	/**
+	 * 登录提交处理
+	 * 
+	 * @param 
+	 * @return String
+	 */
+	@Transactional
+	String loginHanlde(String mobile , String password);
 }

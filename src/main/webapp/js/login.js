@@ -142,11 +142,11 @@ function checkImageCode(val,t){
 
 /** 注册-提交 **/
 function registerSubmit(){
-	if(checkName($("#username").val(),'nameSpan') 
-			&& checkPassword($("#password").val(),'passwordSpan')
-			&& checkPasswordAgain($("#password_again").val(),'passwordAgainSpan','password')
+	if(checkName($("#username"),'nameSpan') 
+			&& checkPassword($("#password"),'passwordSpan')
+			&& checkPasswordAgain($("#password_again"),'passwordAgainSpan','password')
 			&& validateMobile($("#mobile").val(),'mobileSpan')
-			&& checkImageCode($("#imageCode").val(),'imageCodeSpan')
+			&& checkImageCode($("#imageCode"),'imageCodeSpan')
 			&& $("input[type='checkbox']").is(':checked')){
 		$.ajax({
 			url : postPath + '/register/handle',
@@ -155,7 +155,8 @@ function registerSubmit(){
 			dataType : 'json',
 			success : function(data){
 				if(data.returnCode == '0000'){
-					
+					alert("注册成功！");
+					window.location.href = postPath + "/login";
 				}else{
 					var tips = $("#"+data.errorTips);
 					tips.attr("class","cuo");
@@ -164,4 +165,55 @@ function registerSubmit(){
 			}
 		});
 	}
+}
+
+
+/** 登录  验证 **/
+function loginSubmit(){
+	var tipsDiv = $("#tipsDiv");
+	var tips = $("#tips");
+	
+	var mobile = $("#mobile").val();
+	var password = $("#password").val();
+	if(mobile == null || mobile == ''){
+		tipsDiv.css(visibility,'visible');
+		tips.text("登录名不能为空！");
+		return ;
+	}
+	if(password == null || password ==''){
+		tipsDiv.css(visibility,'visible');
+		tips.text("密码不能为空！");
+		return ;
+	}
+	tipsDiv.css(visibility,'hidden');
+	
+	$.ajax({
+		url : postPath + "/login/loginHandle",
+		type : 'post',
+		data : {
+			mobile : mobile,
+			password : password
+		},
+		dataType : 'json',
+		success : function(data){
+			if(data.status == '0000'){
+				
+			}else{
+				ipsDiv.css(visibility,'visible');
+				tips.text("登录名或者密码错误！");
+			}
+		}
+	});
+	
+}
+
+
+/** 找回密码 **/
+function back(){
+	
+}
+
+/** 找回密码 验证码验证 **/
+function validateCode(){
+	
 }

@@ -23,6 +23,9 @@ public class Customer extends Entity{
 	/** 密码 **/
 	private String password;
 	
+	/** 状态 {@link EBaseStatus.java}**/
+	private String status;
+	
 	/** 关联微信号 **/
 	private String openId;
 	
@@ -67,6 +70,14 @@ public class Customer extends Entity{
 
 	public void setCreatedTime(Date createdTime) {
 		this.createdTime = createdTime;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	
