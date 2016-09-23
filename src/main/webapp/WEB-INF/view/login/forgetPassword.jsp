@@ -38,14 +38,14 @@
     	<div class="psw">
         	<p class="psw-p1">输入新密码</p>
             <input type="password" placeholder="请输入密码" 
-            	id="password" name="password" onblur=""/>
-            <span class=""></span>
+            	id="password" name="password" onblur="checkPassword($(this),'passwordSpan');"/>
+            <span id="passwordSpan" class=""></span>
         </div>
     	<div class="psw">
         	<p class="psw-p1">确认密码</p>
             <input type="password" placeholder="请再次确认密码" 
-            	id="password_again" name="password_again" onblur=""/>
-            <span class=""></span>
+            	id="password_again" name="password_again" onblur="checkPasswordAgain($(this),'password_againSpan','password');"/>
+            <span id="password_againSpan" class=""></span>
         </div>
         <button type="button" class="psw-btn" onclick="back();">找回密码</button>
     </div>

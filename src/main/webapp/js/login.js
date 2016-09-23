@@ -1,9 +1,9 @@
 var strPath = window.document.location.pathname;
 var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
 
-/** 注册 - 验证**/
+/** 注册 - 验证*/
 
-/** 验证昵称是否为空**/
+/** 验证昵称是否为空*/
 function checkName(val,spanName){
 	var result = false;
 	var name = val.val();
@@ -18,7 +18,7 @@ function checkName(val,spanName){
 	return result;
 }
 
-/** 验证密码 **/
+/** 验证密码 */
 function checkPassword(val,passwordName){
 	var result = false;
 	var password = val.val();
@@ -39,7 +39,7 @@ function checkPassword(val,passwordName){
 	return result;
 }
 
-/** 再次验证密码 **/
+/** 再次验证密码 */
 function checkPasswordAgain(val,passwordAgain,pd){
 	var result = false;
 	var password = $("#"+pd).val();
@@ -61,7 +61,7 @@ function checkPasswordAgain(val,passwordAgain,pd){
 	return result;
 }
 
-/** 验证手机号 **/
+/** 验证手机号 */
 function validateMobile(mobile,mobileSpan){
 	var tips = $("#"+mobileSpan);
 	if(mobile.length != 11){
@@ -80,7 +80,7 @@ function validateMobile(mobile,mobileSpan){
 	return true;
 }
 
-/** 发送手机验证码 **/
+/** 发送手机验证码 */
 function sendMessage(val,mobileSpan){
 	var mobile = $("#"+val).val();
 	var tips = $("#"+mobileSpan);
@@ -107,7 +107,7 @@ function sendMessage(val,mobileSpan){
 	}
 }
 
-/** 验证码发送成功之后，按钮处理 **/
+/** 验证码发送成功之后，按钮处理 */
 function intervalSendMessage(){
 	var b = $("#sendMessageButton");
 	b.attr("onclick","void(0)");
@@ -124,7 +124,7 @@ function intervalSendMessage(){
 	},1000);
 }
 
-/** 验证图片验证码 **/
+/** 验证图片验证码 */
 function checkImageCode(val,t){
 	var result = true;
 	var imageCode = val.val();
@@ -140,7 +140,7 @@ function checkImageCode(val,t){
 	return result;
 }
 
-/** 注册-提交 **/
+/** 注册-提交 */
 function registerSubmit(){
 	if(checkName($("#username"),'nameSpan') 
 			&& checkPassword($("#password"),'passwordSpan')
@@ -168,7 +168,7 @@ function registerSubmit(){
 }
 
 
-/** 登录  验证 **/
+/** 登录  验证 */
 function loginSubmit(){
 	var tipsDiv = $("#tipsDiv");
 	var tips = $("#tips");
@@ -208,12 +208,21 @@ function loginSubmit(){
 }
 
 
-/** 找回密码 **/
+/** 找回密码 */
 function back(){
 	
 }
 
-/** 找回密码 验证码验证 **/
-function validateCode(){
-	
+/** 找回密码 验证码验证 */
+function validateCode(val,validateSpan){
+	var code = val.val();
+	var tips = $("#"+validateSpan);
+	if(code == null || code == ''){
+		tips.attr("class","cuo");
+		tips.text("验证码不能为空！");
+		return false;
+	}
+	tips.attr("class","");
+	tips.text("");
+	return true;
 }
