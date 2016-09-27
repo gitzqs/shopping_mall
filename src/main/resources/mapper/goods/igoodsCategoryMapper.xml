@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.basic.dao.goods.IGoodsCategoryMapper">
+	<resultMap id="goodsCategoryMap" type="goodsCategory" >
+		<id column="ID" property="id" jdbcType="DECIMAL"/>
+		<result column="NAME" property="name" jdbcType="VARCHAR"/>
+		<result column="LEVEL" property="level" jdbcType="TINYINT"/>
+		<result column="UP_LEVEL_ID" property="upLevelId" jdbcType="DECIMAL"/>
+		<result column="STATUS" property="status" jdbcType="VARCHAR"/>
+		
+	</resultMap>
+	
+	<sql id="base_column">
+		ID,NAME,LEVEL,UP_LEVEL_ID,STATUS
+	</sql>
+	
+	<sql id="sql_from">
+		FROM GOODS_CATEGORY
+	</sql>
+	
+	<sql id="sql_where">
+		WHERE 1=1
+			
+	</sql>
+	
+	
+	<!-- 根据level 获取类别 begin -->
+	<select id="loadByLevel" parameterType="TINYINT" resultType="Map">
+		SELECT
+		<include refid="base_column"></include>
+		<include refid="sql_from"></include>
+		WHERE LEVEL = #{level}
+			AND STATUS = 'ENABLED'
+	</select>
+	<!-- 根据level 获取类别 end -->
+	
+	<!-- 根据上级id获取下级分类 begin -->
+	<select id="loadByUpLevel" parameterType="Long" resultType="Map">
+		SELECT
+		<include refid="base_column"></include>
+		<include refid="sql_from"></include>
+		WHERE UP_LEVEL_ID = #{upId}
+			AND STATUS = 'ENABLED'
+	</select>
+	<!-- 根据上级id获取下级分类 end -->
+</mapper>

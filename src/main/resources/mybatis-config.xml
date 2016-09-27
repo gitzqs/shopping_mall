@@ -37,6 +37,10 @@
 			<typeAlias type="com.basic.model.message.VerificationCode" alias="verificationCode"/>
 		<!-- message end -->
 		
+		<!-- goods begin -->
+			<typeAlias type="com.basic.model.goods.GoodsCategory" alias="goodsCategory"/>
+		<!-- goods end -->
+		
 	</typeAliases>
 	
 	<!-- 自定义mybatis jdbcType -->

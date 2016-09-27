@@ -68,3 +68,21 @@ CREATE TABLE verification_code(
 	PRIMARY KEY(id)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 
+
+-- TABLE STRUCTURE FOR GOODS_CATEGORY --
+DROP TABLE IF EXISTS goods_category;
+CREATE TABLE goods_category(
+	id bigint(19) NOT NULL AUTO_INCREMENT,
+	name varchar(20) COLLATE utf8_bin DEFAULT NULL,
+	level tinyint(1) NOT NULL,
+	up_level_id bigint(19) DEFAULT NULL,
+	status varchar(10) DEFAULT NULL,
+	creator_id bigint(19) DEFAULT NULL,
+	creator varchar(20) COLLATE utf8_bin DEFAULT NULL,
+	created_time timestamp NULL,
+	last_operator_id bigint(19) DEFAULT NULL,
+	last_operator varchar(20) COLLATE utf8_bin DEFAULT NULL,
+	last_operated_time timestamp NULL,
+	PRIMARY KEY(id)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+

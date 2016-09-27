@@ -114,7 +114,7 @@ public class HttpGetUtils {
     }
 
     /**
-     * ���URL
+     * URL
      * @param map Map
      * @return String
      */
