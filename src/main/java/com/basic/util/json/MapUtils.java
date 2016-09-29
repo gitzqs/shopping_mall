@@ -23,7 +23,6 @@ public class MapUtils {
      * @Title: valueEmpty2Null
      * @Description: 将 值为 empty 转为 null
      * @param map
-     * @return
      * @return: Map<String,Object>
      */
     public static Map<String, Object> valueEmpty2Null(Map<String, Object> params) {
@@ -39,7 +38,6 @@ public class MapUtils {
      * @Title: valueEmpty2Null
      * @Description: 将 值为 null 转为 empty
      * @param map
-     * @return
      * @return: Map<String,Object>
      */
     public static Map<String, Object> valueNull2Empty(Map<String, Object> params) {
@@ -54,7 +52,6 @@ public class MapUtils {
     /**
      * @Title: requestMap 获取页面 传如后台的 map
      * @return: Map<String,Object>
-     * @author: peng.wu
      * @date: 2014年9月25日 下午10:17:00
      */
     public static Map<String, String> requestMap(HttpServletRequest request) {
@@ -68,11 +65,11 @@ public class MapUtils {
         return map;
     }
     
+    
     /**
      * @Title: requestObjMap
      * @Description: Key<String> Value<Object>
      * @return: Map<String,String>
-     * @author: peng.wu
      * @date: 2014年12月1日 上午11:59:51
      */
     @SuppressWarnings("unchecked")
